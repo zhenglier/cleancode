@@ -1,5 +1,5 @@
 import teaching.Args;
-
+import teaching.ArgsException;
 public class Main {
     public static void main(String[] args) {
         try {
@@ -8,6 +8,8 @@ public class Main {
             int port = arg.getInt('p');
             String directory = arg.getString('d');
             executeApplication(logging, port, directory);
+        } catch (ArgsException e) {
+            System.out.printf("Argument error: %s\n", e.errorMessage(args));
         } catch (Exception e) {
             System.out.printf("Unexpected error: %s\n", e.getMessage());
         }
